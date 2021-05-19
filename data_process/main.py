@@ -19,7 +19,7 @@ sql = """CREATE TABLE IF NOT EXISTS `user` (
       `userID` varchar(15) NOT NULL,
       `itemID` varchar(15) NOT NULL,
       `categoryID` varchar(15) NOT NULL,
-      `isSecondKill` int(1) default NUll,
+      `isSecondKill` int(1) default NULL,
       `success` int(1) default NULL,
       PRIMARY KEY (`key`)
     ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0"""

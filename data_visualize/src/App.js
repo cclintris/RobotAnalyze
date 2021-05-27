@@ -1,15 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router, Route, hashHistory } from "react-router";
 import "./App.css";
-
 import Home from "./pages/Home";
+import MarketSales from "./components/templates/Marketsales";
+import Transactions from "./components/templates/Transactions";
+import SalesViews from "./components/templates/SalesViews";
 
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home}></Route>
-      </Switch>
+    <Router history={hashHistory}>
+      <Route exact path="/" component={Home}>
+        <Route path="/marketsales" component={MarketSales}></Route>
+        <Route path="/transactions" component={Transactions}></Route>
+        <Route path="/salesviews" component={SalesViews}></Route>
+      </Route>
     </Router>
   );
 };

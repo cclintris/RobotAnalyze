@@ -2,9 +2,17 @@
   height: 100vh;
   width: 100vw;
 }
+.home .alilogo {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: #ff6000;
+}
 .home .content {
   height: calc(100vh - 64px);
-  padding: 30px 30px 0 30px;
+  padding: 20px 20px 0 20px;
   background-color: #f0f2f5;
 }
 .home .content .show {

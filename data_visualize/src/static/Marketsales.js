@@ -23,7 +23,7 @@ export const option = {
   ],
   xAxis: {
     type: "category",
-    axisLabel: { interval: 0, rotate: 30 },
+    axisLabel: { interval: 0 },
   },
   yAxis: {},
   series: {

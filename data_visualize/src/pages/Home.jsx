@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { Layout, Menu } from "antd";
 import { AlibabaOutlined } from "@ant-design/icons";
+import MarketSales from "../components/templates/Marketsales";
 
 const { Header, Content, Footer } = Layout;
 
 const Home = (props) => {
-  const [defaultMenuKey, setDefaultMenuKey] = useState("1");
+  const [defaultMenuKey, setDefaultMenuKey] = useState(["1"]);
 
   const handleMenuSwitch = (o) => {
     const key = o.key;
@@ -38,11 +39,11 @@ const Home = (props) => {
         >
           <Menu.Item key="1">产品销量排名</Menu.Item>
           <Menu.Item key="2">交易量走向</Menu.Item>
-          <Menu.Item key="3">热门产品销售浏览对比</Menu.Item>
+          <Menu.Item key="3">热门产品销售浏览比</Menu.Item>
         </Menu>
       </Header>
       <Content className="content">
-        <div className="show">{props.children}</div>
+        <div className="show">{props.children || <MarketSales />}</div>
       </Content>
       <Footer className="footer">
         @Ali Tianchi data vizualization web designed by cclin

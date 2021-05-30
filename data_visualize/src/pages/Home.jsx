@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Home.css";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Switch } from "antd";
 import { AlibabaOutlined } from "@ant-design/icons";
 import MarketSales from "../components/templates/Marketsales";
+import { useDispatch } from "react-redux";
+import { changeTheme } from "../redux/actions/theme";
 
 const { Header, Content, Footer } = Layout;
 
 const Home = (props) => {
+  const dispatch = useDispatch();
   const [defaultMenuKey, setDefaultMenuKey] = useState(["1"]);
 
   const handleMenuSwitch = (o) => {
@@ -26,6 +29,11 @@ const Home = (props) => {
     }
   };
 
+  const toggleTheme = (checked) => {
+    // checked === true ? light : dark
+    checked ? dispatch(changeTheme("light")) : dispatch(changeTheme("dark"));
+  };
+
   return (
     <Layout style={{ height: "100vh" }} className="home">
       <AlibabaOutlined className="alilogo" />
@@ -41,6 +49,13 @@ const Home = (props) => {
           <Menu.Item key="2">交易量走向</Menu.Item>
           <Menu.Item key="3">热门产品销售浏览比</Menu.Item>
         </Menu>
+        <Switch
+          checkedChildren="浅色主题"
+          unCheckedChildren="深色主题"
+          defaultChecked
+          className="themetoggle"
+          onChange={toggleTheme}
+        />
       </Header>
       <Content className="content">
         <div className="show">{props.children || <MarketSales />}</div>

@@ -24,6 +24,9 @@ const Home = (props) => {
       case "3":
         props.router.push("/salesviews");
         break;
+      case "4":
+        props.router.push("/convertratio");
+        break;
       default:
         console.log("not found");
     }
@@ -47,7 +50,8 @@ const Home = (props) => {
         >
           <Menu.Item key="1">产品销量排名</Menu.Item>
           <Menu.Item key="2">交易量走向</Menu.Item>
-          <Menu.Item key="3">热门产品销售浏览比</Menu.Item>
+          <Menu.Item key="3">产品销售浏览比</Menu.Item>
+          <Menu.Item key="4">产品购买转化率</Menu.Item>
         </Menu>
         <Switch
           checkedChildren="浅色主题"

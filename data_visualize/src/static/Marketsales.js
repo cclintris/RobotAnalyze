@@ -1,34 +1,63 @@
+import * as echarts from "echarts";
+import { topHot } from "./utils/data";
+
 export const option = {
   dataset: [
     {
-      dimensions: ["name", "age", "profession", "score", "date"],
-      source: [
-        [" Hannah Krause ", 41, "Engineer", 314, "2011-02-12"],
-        ["Zhao Qian ", 20, "Teacher", 351, "2011-03-01"],
-        [" Jasmin Krause ", 52, "Musician", 287, "2011-02-14"],
-        ["Li Lei", 37, "Teacher", 219, "2011-02-18"],
-        [" Karle Neumann ", 25, "Engineer", 253, "2011-04-02"],
-        [" Adrian Groß", 19, "Teacher", null, "2011-01-16"],
-        ["Mia Neumann", 71, "Engineer", 165, "2011-03-19"],
-        [" Böhm Fuchs", 36, "Musician", 318, "2011-02-24"],
-        ["Han Meimei ", 67, "Engineer", 366, "2011-03-12"],
-      ],
+      dimensions: ["itemId", "sales"],
+      source: topHot,
     },
     {
       transform: {
         type: "sort",
-        config: { dimension: "score", order: "desc" },
+        config: { dimension: "sales", order: "desc" },
       },
     },
   ],
   xAxis: {
     type: "category",
     axisLabel: { interval: 0 },
+    name: "产品Id",
   },
-  yAxis: {},
+  yAxis: {
+    name: "产品销量(份)",
+  },
   series: {
     type: "bar",
-    encode: { x: "name", y: "score" },
+    encode: { x: "itemId", y: "sales" },
     datasetIndex: 1,
+    showBackground: true,
+    // backgroundStyle: {
+    //   color: "rgba(180, 180, 180, 0.2)",
+    // },
+    itemStyle: {
+      color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+        { offset: 0, color: "#83bff6" },
+        { offset: 0.5, color: "#188df0" },
+        { offset: 1, color: "#188df0" },
+      ]),
+    },
+  },
+  tooltip: {
+    trigger: "axis",
+    formatter: function (params) {
+      return (
+        "itemId: " +
+        params[0].data[0] +
+        "<br>" +
+        "产品销量: " +
+        params[0].data[1]
+      );
+    },
+    textStyle: {
+      align: "left",
+    },
+  },
+  toolbox: {
+    right: "35",
+    top: "10",
+    feature: {
+      saveAsImage: {},
+    },
   },
 };
